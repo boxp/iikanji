@@ -1,17 +1,177 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+const projects = [
+  {
+    name: 'hitohub',
+    description: 'VRアバターマッチングサービス。同じアバターを愛する人々をつなぐ。',
+    url: 'https://github.com/boxp/vr-match',
+    tags: ['Clojure', 'VR', 'WebApp'],
+    emoji: '🥽',
+  },
+  {
+    name: 'b0xp.io',
+    description: '既存のポートフォリオサイト。ClojureScript 製。',
+    url: 'https://b0xp.io',
+    tags: ['ClojureScript', 'Leiningen'],
+    emoji: '🌐',
+  },
+  {
+    name: 'arch',
+    description: 'インフラ設定の IaC リポジトリ。Terraform + Kubernetes。',
+    url: 'https://github.com/boxp/arch',
+    tags: ['Terraform', 'Kubernetes', 'IaC'],
+    emoji: '🏗️',
+  },
+];
+
+const links = [
+  { label: 'GitHub', url: 'https://github.com/boxp' },
+  { label: 'b0xp.io', url: 'https://b0xp.io' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="boxp" description="developer & creator">
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 relative overflow-hidden">
+    <!-- Background grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <!-- Glow blobs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl" style="background: radial-gradient(circle, #7c3aed, transparent);"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-[0.08] blur-3xl" style="background: radial-gradient(circle, #ec4899, transparent);"></div>
+
+    <div class="relative z-10 max-w-4xl">
+      <p class="animate-fade-up font-['JetBrains_Mono',monospace] text-sm text-[#666] mb-6 tracking-widest uppercase">
+        <span style="color: #7c3aed;">~/</span>boxp
+      </p>
+      <h1 class="animate-fade-up-delay-1 text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none mb-6">
+        <span class="gradient-text">boxp</span>
+      </h1>
+      <p class="animate-fade-up-delay-2 text-xl md:text-2xl text-[#888] font-light max-w-xl leading-relaxed mb-10">
+        developer, creator, explorer —<br />
+        <span class="text-[#e8e8e8]">ものを作り、仕組みを理解し、次へ進む。</span>
+      </p>
+      <div class="animate-fade-up-delay-3 flex gap-4 flex-wrap">
+        <a
+          href="#projects"
+          class="px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 text-white"
+          style="background: linear-gradient(135deg, #7c3aed, #ec4899);"
+        >
+          Projects →
+        </a>
+        <a
+          href="https://github.com/boxp"
+          target="_blank"
+          rel="noopener"
+          class="px-6 py-3 rounded-lg border border-[#1f1f1f] text-sm font-medium text-[#888] hover:text-[#e8e8e8] hover:border-[#333] transition-all duration-200"
+        >
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="animate-fade-up-delay-4 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#444] text-xs">
+      <span class="font-['JetBrains_Mono',monospace]">scroll</span>
+      <div class="w-px h-12 bg-gradient-to-b from-[#444] to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="px-6 md:px-16 lg:px-24 py-24 max-w-4xl mx-auto w-full">
+    <p class="font-['JetBrains_Mono',monospace] text-xs uppercase tracking-widest mb-4" style="color: #7c3aed;">about</p>
+    <h2 class="text-3xl md:text-4xl font-semibold mb-8 text-[#e8e8e8]">何者か</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="space-y-4 text-[#888] leading-relaxed">
+        <p>
+          ソフトウェアエンジニア。Clojure、TypeScript、Kubernetes あたりが得意。
+          作るものの美しさと動く仕組みの両方に興味がある。
+        </p>
+        <p>
+          VR 空間とアバター文化が好きで、hitohub という
+          アバターマッチングサービスを開発中。
+        </p>
+      </div>
+      <div class="space-y-3">
+        {[
+          ['Languages', 'Clojure, TypeScript, Go, Rust'],
+          ['Infra', 'Kubernetes, Terraform, Cloudflare'],
+          ['Interests', 'VR, Web, Systems, Design'],
+        ].map(([label, value]) => (
+          <div class="flex gap-3 text-sm">
+            <span class="font-['JetBrains_Mono',monospace] min-w-24 shrink-0" style="color: #7c3aed;">{label}</span>
+            <span class="text-[#888]">{value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="px-6 md:px-16 lg:px-24">
+    <div class="h-px bg-[#1f1f1f]"></div>
+  </div>
+
+  <!-- Projects -->
+  <section id="projects" class="px-6 md:px-16 lg:px-24 py-24">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-['JetBrains_Mono',monospace] text-xs uppercase tracking-widest mb-4" style="color: #7c3aed;">projects</p>
+      <h2 class="text-3xl md:text-4xl font-semibold mb-12 text-[#e8e8e8]">作ったもの</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projects.map((project) => (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener"
+            class="card-hover block p-6 rounded-xl border border-[#1f1f1f] bg-[#111] group"
+          >
+            <div class="text-2xl mb-4">{project.emoji}</div>
+            <h3 class="font-semibold text-[#e8e8e8] mb-2 group-hover:text-[#a78bfa] transition-colors font-['JetBrains_Mono',monospace]">
+              {project.name}
+            </h3>
+            <p class="text-sm text-[#666] leading-relaxed mb-4">{project.description}</p>
+            <div class="flex flex-wrap gap-1">
+              {project.tags.map((tag) => (
+                <span class="text-xs px-2 py-0.5 rounded border border-[#1f1f1f] text-[#555] font-['JetBrains_Mono',monospace]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="px-6 md:px-16 lg:px-24">
+    <div class="h-px bg-[#1f1f1f]"></div>
+  </div>
+
+  <!-- Footer / Links -->
+  <footer class="px-6 md:px-16 lg:px-24 py-16">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <div>
+        <p class="font-['JetBrains_Mono',monospace] text-xs uppercase tracking-widest mb-2" style="color: #7c3aed;">contact</p>
+        <p class="text-[#666] text-sm">find me on the internet</p>
+      </div>
+      <div class="flex gap-6">
+        {links.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-[#555] hover:text-[#e8e8e8] transition-colors font-['JetBrains_Mono',monospace]"
+          >
+            {link.label} ↗
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="max-w-4xl mx-auto mt-12 pt-8 border-t border-[#111]">
+      <p class="text-xs text-[#333] font-['JetBrains_Mono',monospace]">
+        © 2026 boxp — built with <span class="text-[#555]">Astro + Tailwind</span>
+      </p>
+    </div>
+  </footer>
+</Layout>
